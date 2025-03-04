@@ -17,6 +17,7 @@ class SplashScreen: UIViewController {
     let scLabelOne = CustomLabel(text: "Drops Water Tracker", textColor: .white,font: UIFont.systemFont(ofSize: 28, weight: .heavy))
     let scLabelTwo = CustomLabel(text: "Stay hydrated and track daily water intake", textColor: .white,font: UIFont.systemFont(ofSize: 16, weight: .light))
     
+    
     // ehfhbefhebhfehfujs
     // enfieudi
     
@@ -55,22 +56,3 @@ class SplashScreen: UIViewController {
     }
 }
 
-
-// MARK: - EXTENSION BACKGROUND COLOR
-extension UIColor {
-    convenience init(hex: String) {
-        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-        if hexSanitized.hasPrefix("#") {
-            hexSanitized.remove(at: hexSanitized.startIndex)
-        }
-        
-        var hexValue: UInt64 = 0
-        Scanner(string: hexSanitized).scanHexInt64(&hexValue)
-        
-        let red = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((hexValue & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(hexValue & 0x0000FF) / 255.0
-        
-        self.init(red: red, green: green, blue: blue, alpha: 1.0)
-    }
-}
