@@ -18,8 +18,6 @@ class SplashScreen: UIViewController {
     let scLabelTwo = CustomLabel(text: "Stay hydrated and track daily water intake", textColor: .white,font: UIFont.systemFont(ofSize: 16, weight: .light))
     
     
-    // ehfhbefhebhfehfujs
-    // enfieudi
     
     // MARK: - APP LIFECYCLE
     override func viewDidLoad() {
