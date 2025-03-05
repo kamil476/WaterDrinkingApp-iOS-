@@ -7,13 +7,9 @@
 
 import UIKit
 
-// (1)
-//protocol DailyGoalAdded: AnyObject {
-//    func dailyWaterGoal(value: String)
-//}
-
 class AddDailyGoalVC: UIViewController {
     
+// MARK: - UI COMPONENETS
     private let vectorImage = CustomImageView(imageName: "Vector 1")
     private let vectorImage1 = CustomImageView(imageName: "Vector 1")
     private let vectorImage2 = CustomImageView(imageName: "Vector 2")
@@ -47,12 +43,14 @@ class AddDailyGoalVC: UIViewController {
         return btn
     }()
     
+// MARK: - APP LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backGroundBlue
         setupHomeView()
     }
     
+// MARK: - FUNCTIONS
     private func setupHomeView(){
         view.addSubview(vectorImage)
         view.addSubview(vectorImage1)
@@ -61,13 +59,12 @@ class AddDailyGoalVC: UIViewController {
         view.addSubview(valueLabel)
         view.addSubview(saveBtn)
         vectorImages2.addSubview(slider)
-        
         vectorImages2.transform = CGAffineTransform(scaleX: 1, y: -1)
         vectorImage1.transform = CGAffineTransform(scaleX: 1, y: -1)
         vectorImage2.transform = CGAffineTransform(scaleX: 1, y: -1)
         vectorImage.transform = CGAffineTransform(scaleX: 1, y: -1)
         
-        // Create and set up the slider
+        // Creating and setting up the slider
         view.addSubview(slider)
         
         
@@ -108,11 +105,11 @@ class AddDailyGoalVC: UIViewController {
         
     }
     
-    // MARK: - Button Action
+// MARK: - ACTIONS
     @objc func saveButtonTapped() {
         UserDefaults.standard.setValue(valueLabel.text ?? "", forKey: "dailyWaterGoal")
         
-        // (4) Pop back to ReceiverViewController
+        // back to ReceiverViewController
         navigationController?.popViewController(animated: true)
     }
     

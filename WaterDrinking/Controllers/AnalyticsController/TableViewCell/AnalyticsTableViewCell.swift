@@ -10,7 +10,7 @@ import UIKit
 class AnalyticsTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var collectionView: UICollectionView!
-    var drinks: [listOfSavedDrinks] = []
+    var listOfDrinks: [listOfSavedDrinks] = []
     var dateLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -57,18 +57,18 @@ class AnalyticsTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
     
     func configure(with date: String, drinks: [listOfSavedDrinks]) {
         self.dateLabel.text = date
-        self.drinks = drinks
+        self.listOfDrinks = drinks
         collectionView.reloadData()
     }
     
     // MARK: - UICollectionViewDataSource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return drinks.count
+        return listOfDrinks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnalyticsCollectionViewCell", for: indexPath) as! AnalyticsCollectionViewCell
-        let item = drinks[indexPath.row]
+        let item = listOfDrinks[indexPath.row]
         cell.configure(with: item)
         return cell
     }

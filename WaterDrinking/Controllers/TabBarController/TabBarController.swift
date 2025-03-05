@@ -22,10 +22,10 @@ class TabBarController: UITabBarController {
         settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "setting 1"), tag: 2)
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "user-svgrepo-com 1"), tag: 3)
                 
-        // Set view controllers for the tab bar
+        // Setting view controllers for the tab bar
         viewControllers = [homeVC, analyticsVC, settingsVC, profileVC]
         
-        // Set selected view controller to Home
+        // Setting selected view controller to Home
         selectedIndex = 0
     }
     

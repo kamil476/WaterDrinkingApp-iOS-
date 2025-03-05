@@ -18,9 +18,7 @@ class SettingsVC: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
-    
-//    var getValueDelegate: getValue?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backGroundBlue

@@ -9,9 +9,6 @@ import UIKit
 
 class CustomLabel: UILabel {
     
-    override init(frame: CGRect){
-        super.init(frame: frame)
-    }
     init(text: String, textAlignment: NSTextAlignment = .center, textColor: UIColor?, font: UIFont?) {
         super.init(frame: .zero)
         self.text = text

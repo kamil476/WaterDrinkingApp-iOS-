@@ -9,6 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+// MARK: - UI COMPONENETS
     lazy var drinkLimitLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 38, weight: .bold)
@@ -58,7 +59,6 @@ class HomeViewController: UIViewController {
         btn.addTarget(self, action: #selector (addTea), for: .touchUpInside)
         return btn
     }()
-    
     private let teaLabel = CustomLabel(text: "TEA", textColor: .gray, font: UIFont.systemFont(ofSize: 11, weight: .bold))
     lazy var coffeeIcon: UIButton = {
         let btn = UIButton()
@@ -82,9 +82,7 @@ class HomeViewController: UIViewController {
     private let waterLabel = CustomLabel(text: "WATER", textColor: .gray, font: UIFont.systemFont(ofSize: 11, weight: .bold))
     lazy var addDrinkBtn: UIButton = {
         let btn = UIButton()
-//        if let image = UIImage(named: "addIcon") {
-            btn.setImage(UIImage(named: "addIcon"), for: .normal)
-//        }
+        btn.setImage(UIImage(named: "addIcon"), for: .normal)
         btn.layer.cornerRadius = 10
         btn.layer.shadowColor = UIColor.black.cgColor
         btn.layer.shadowOpacity = 0.2
@@ -133,7 +131,7 @@ class HomeViewController: UIViewController {
         view.addSubview(weeklyButton)
         view.addSubview(updatedDailyGoal)
         view.addSubview(drinkLimitLabel)
-
+        
         vectorImages2.transform = CGAffineTransform(scaleX: 1, y: -1)
         vectorImage1.transform = CGAffineTransform(scaleX: 1, y: -1)
         vectorImage2.transform = CGAffineTransform(scaleX: 1, y: -1)
@@ -312,7 +310,7 @@ class HomeViewController: UIViewController {
         }
         navigationController?.pushViewController(addCoffeeVC, animated: true)
         dismissBottomSheet()
-
+        
     }
     
     @objc func addTea() {
@@ -333,7 +331,7 @@ class HomeViewController: UIViewController {
         
         navigationController?.pushViewController(addTeaVC, animated: true)
         dismissBottomSheet()
-
+        
     }
     
     @objc func dismissBottomSheet() {

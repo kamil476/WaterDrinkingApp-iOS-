@@ -14,7 +14,6 @@ class OnboardingCell: UICollectionViewCell {
     let osIcon = CustomImageView(imageName: "")
     let osLabelOne = CustomLabel(text: "", textColor: .black, font: UIFont.systemFont(ofSize: 26, weight: .bold))
     let osLabelTwo = CustomLabel(text: "", textColor: .systemGray, font: UIFont.systemFont(ofSize: 15, weight: .light))
-    //    let nextButton = CustomButton(backgroundColor: UIColor(hex: "#5DCCFC"), title: "Next")
     
     override init(frame: CGRect) {
         super.init(frame: frame)

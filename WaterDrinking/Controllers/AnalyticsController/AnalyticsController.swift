@@ -9,6 +9,7 @@ import UIKit
 
 class AnalyticsController: UIViewController {
     
+// MARK: - UI COMPONENETS
     lazy var tableView: UITableView = {
         let tableview = UITableView()
         tableview.delegate = self
@@ -20,7 +21,7 @@ class AnalyticsController: UIViewController {
     }()
     private var drinksByDate: [(date: String, drinks: [listOfSavedDrinks])] = []
     
-    
+// MARK: - APP LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -31,6 +32,7 @@ class AnalyticsController: UIViewController {
         fetchDrinks()
     }
     
+// MARK: - FUNCTIONS
     private func setupTableView() {
         view.addSubview(tableView)
         

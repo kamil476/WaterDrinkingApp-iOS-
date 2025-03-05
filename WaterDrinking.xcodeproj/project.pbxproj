@@ -20,7 +20,6 @@
 		E8945F2A2D59E93B006713BF /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8945F292D59E93B006713BF /* CustomView.swift */; };
 		E8945F2E2D5A152F006713BF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8945F2D2D5A152F006713BF /* CustomButton.swift */; };
 		E8945F382D5B1AF5006713BF /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8945F372D5B1AF5006713BF /* OnboardingViewController.swift */; };
-		E8945F3C2D5B26B4006713BF /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8945F3B2D5B26B4006713BF /* CustomPageControl.swift */; };
 		E8945F3F2D5B2BEE006713BF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8945F3E2D5B2BEE006713BF /* HomeViewController.swift */; };
 		E8945F412D5B4F40006713BF /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8945F402D5B4F40006713BF /* OnboardingCell.swift */; };
 		E8945F432D5B4FA4006713BF /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8945F422D5B4FA4006713BF /* Items.swift */; };
@@ -37,6 +36,8 @@
 		E8945F712D65EB03006713BF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8945F702D65EB03006713BF /* CoreDataManager.swift */; };
 		E8945F742D6852B5006713BF /* AnalyticsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8945F732D6852B5006713BF /* AnalyticsCollectionViewCell.swift */; };
 		E8D5F4102D4F9523002B38D6 /* AnalyticsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5F40F2D4F9523002B38D6 /* AnalyticsController.swift */; };
+		E8DC7AFE2D76DF7600C9FFEF /* DrinkTypeStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC7AFD2D76DF7600C9FFEF /* DrinkTypeStructure.swift */; };
+		E8DC7B012D76E01E00C9FFEF /* DateOnlyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC7B002D76E01E00C9FFEF /* DateOnlyExtension.swift */; };
 		E8F2DA5C2D75E1FD0051EE97 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F2DA5B2D75E1FD0051EE97 /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +76,6 @@
 		E8945F292D59E93B006713BF /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		E8945F2D2D5A152F006713BF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		E8945F372D5B1AF5006713BF /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		E8945F3B2D5B26B4006713BF /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
 		E8945F3E2D5B2BEE006713BF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E8945F402D5B4F40006713BF /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		E8945F422D5B4FA4006713BF /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
@@ -92,6 +92,8 @@
 		E8945F702D65EB03006713BF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E8945F732D6852B5006713BF /* AnalyticsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E8D5F40F2D4F9523002B38D6 /* AnalyticsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsController.swift; sourceTree = "<group>"; };
+		E8DC7AFD2D76DF7600C9FFEF /* DrinkTypeStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTypeStructure.swift; sourceTree = "<group>"; };
+		E8DC7B002D76E01E00C9FFEF /* DateOnlyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOnlyExtension.swift; sourceTree = "<group>"; };
 		E8F2DA5B2D75E1FD0051EE97 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,7 +186,6 @@
 		E8945F222D59E85A006713BF /* Custom Files */ = {
 			isa = PBXGroup;
 			children = (
-				E8945F3B2D5B26B4006713BF /* CustomPageControl.swift */,
 				E8945F252D59E8E4006713BF /* CustomLabel.swift */,
 				E8945F272D59E90F006713BF /* CustomImageView.swift */,
 				E8945F292D59E93B006713BF /* CustomView.swift */,
@@ -207,6 +208,7 @@
 		E8945F462D5F1BBE006713BF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E8DC7AFF2D76DFD300C9FFEF /* DateOnlyExtension */,
 				E8F2DA5A2D75E1CF0051EE97 /* ColorExtension */,
 				E8945F472D5F1BCB006713BF /* AutoSizingExtension */,
 			);
@@ -321,6 +323,14 @@
 			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
+		E8DC7AFF2D76DFD300C9FFEF /* DateOnlyExtension */ = {
+			isa = PBXGroup;
+			children = (
+				E8DC7B002D76E01E00C9FFEF /* DateOnlyExtension.swift */,
+			);
+			path = DateOnlyExtension;
+			sourceTree = "<group>";
+		};
 		E8F2DA5A2D75E1CF0051EE97 /* ColorExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				E8945F442D5E2A73006713BF /* AddDrinkViewController.swift */,
+				E8DC7AFD2D76DF7600C9FFEF /* DrinkTypeStructure.swift */,
 			);
 			path = AddDrinkController;
 			sourceTree = "<group>";
@@ -476,6 +487,8 @@
 				E8945EF32D59DC86006713BF /* AppDelegate.swift in Sources */,
 				E8945F742D6852B5006713BF /* AnalyticsCollectionViewCell.swift in Sources */,
 				E8D5F4102D4F9523002B38D6 /* AnalyticsController.swift in Sources */,
+				E8DC7B012D76E01E00C9FFEF /* DateOnlyExtension.swift in Sources */,
+				E8DC7AFE2D76DF7600C9FFEF /* DrinkTypeStructure.swift in Sources */,
 				E8945F522D5F7111006713BF /* DrinkItems.swift in Sources */,
 				E8945F3F2D5B2BEE006713BF /* HomeViewController.swift in Sources */,
 				E8F2DA5C2D75E1FD0051EE97 /* ColorExtension.swift in Sources */,
@@ -491,7 +504,6 @@
 				E8945F2A2D59E93B006713BF /* CustomView.swift in Sources */,
 				E8945F262D59E8E4006713BF /* CustomLabel.swift in Sources */,
 				E8945F282D59E90F006713BF /* CustomImageView.swift in Sources */,
-				E8945F3C2D5B26B4006713BF /* CustomPageControl.swift in Sources */,
 				E8945F682D636165006713BF /* AddDailyGoalVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

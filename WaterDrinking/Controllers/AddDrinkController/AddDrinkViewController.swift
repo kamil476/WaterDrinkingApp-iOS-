@@ -7,27 +7,22 @@
 
 import UIKit
 
-enum DrinkType: String {
-    case water
-    case coffee
-    case tea
-}
-
 class AddDrinkViewController: UIViewController {
     
+// MARK: - UI COMPONENETS
     var onWaterAdded: ((listOfDrinks) -> Void)?
     var onCoffeeAdded: ((listOfDrinks) -> Void)?
     var onTeaAdded: ((listOfDrinks) -> Void)?
     lazy var slider: UISlider = {
-        let slide = UISlider()
-        slide.minimumValue = 0
-        slide.maximumValue = 500
-        slide.translatesAutoresizingMaskIntoConstraints = false
-        slide.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
-        slide.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
-        return slide
+        let slider = UISlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 500
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        slider.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
+        slider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        return slider
     }()
-    lazy var valueLabel: UILabel = {
+    lazy var quantityLabel: UILabel = {
         let valLabel = UILabel()
         valLabel.font = UIFont.systemFont(ofSize: 24)
         valLabel.textColor = .black
@@ -38,9 +33,7 @@ class AddDrinkViewController: UIViewController {
     private let waveImage = CustomImageView(imageName: "Vector 1")
     lazy var checkMark: UIButton = {
         let btn = UIButton()
-        if let image = UIImage(named: "icons8-check-48") {
-            btn.setImage(image, for: .normal)
-        }
+        btn.setImage(UIImage(named: "icons8-check-48"), for: .normal)
         btn.layer.cornerRadius = 10
         btn.layer.shadowColor = UIColor.black.cgColor
         btn.layer.shadowOpacity = 0.2
@@ -52,21 +45,23 @@ class AddDrinkViewController: UIViewController {
     }()
     var drinkType: DrinkType = .water
     
+// MARK: - APP LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupViews()
     }
     
+// MARK: - FUNCTIONS
     private func setupViews(){
-        view.addSubview(valueLabel)
+        view.addSubview(quantityLabel)
         view.addSubview(glassImage)
         view.addSubview(checkMark)
         view.addSubview(slider)
         
         NSLayoutConstraint.activate([
-            valueLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            valueLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 180),
+            quantityLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            quantityLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 180),
             
             slider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 160),
             slider.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -84,18 +79,18 @@ class AddDrinkViewController: UIViewController {
     }
     
     @objc func sliderValueChanged(_ sender: UISlider) {
-        valueLabel.text = String(format: "%.0f", sender.value)
+        quantityLabel.text = String(format: "%.0f", sender.value)
     }
     
     @objc func moveToHomeController() {
         let quantity = Int32(slider.value)
         
-        //        // Creating the drink item based on the selected drink type
+        // Creating the drink item based on the selected drink type
         //        CoreDataManager.shared.saveDrink(drinkDate: drinkType.rawValue, drinkName: drinkType.rawValue.capitalized, drinkImage: drinkType.rawValue, drinkQuantity: quantity, drinkType: drinkType.rawValue.capitalized)
         
         // Pass the current date to the drinkDate parameter
         CoreDataManager.shared.saveDrink(
-            drinkDate: Date().stripTime(), // Stripe erases the time part
+            drinkDate: Date().stripTime(), // Stripe erases the time
             drinkName: drinkType.rawValue.capitalized,
             drinkImage: drinkType.rawValue,
             drinkQuantity: quantity,
@@ -105,10 +100,3 @@ class AddDrinkViewController: UIViewController {
     }
 }
 
-extension Date {
-    func stripTime() -> Date {
-        let components = Calendar.current.dateComponents([.year, .month, .day], from: self)
-        let date = Calendar.current.date(from: components)
-        return date!
-    }
-}
