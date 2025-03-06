@@ -9,9 +9,30 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    var drinkLimitLabel = UILabel()
-    var updatedDailyGoal = UILabel()
-    var collectionView: UICollectionView!
+    lazy var drinkLimitLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 38, weight: .bold)
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    lazy var updatedDailyGoal: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 38, weight: .bold)
+        label.textColor = .blueText
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
+        collectionView.register(WaterIntakeCell.self, forCellWithReuseIdentifier: "WaterIntakeCell")
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
     private let vectorImage = CustomImageView(imageName: "Vector 1")
     private let vectorImage1 = CustomImageView(imageName: "Vector 1")
     private let vectorImage2 = CustomImageView(imageName: "Vector 2")
@@ -27,6 +48,7 @@ class HomeViewController: UIViewController {
         btn.addTarget(self, action: #selector (addTea), for: .touchUpInside)
         return btn
     }()
+    
     private let teaLabel = CustomLabel(text: "TEA", textColor: .gray, font: UIFont.systemFont(ofSize: 11, weight: .bold))
     lazy var coffeeIcon: UIButton = {
         let btn = UIButton()
@@ -75,7 +97,6 @@ class HomeViewController: UIViewController {
     }()
     private var latestDrankItem: [listOfDrinks] = []
     
-    
     // MARK: - APP LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,12 +123,7 @@ class HomeViewController: UIViewController {
         view.addSubview(weeklyButton)
         view.addSubview(updatedDailyGoal)
         view.addSubview(drinkLimitLabel)
-        drinkLimitLabel.font = UIFont.systemFont(ofSize: 38, weight: .bold)
-        drinkLimitLabel.textColor = .white
-        drinkLimitLabel.translatesAutoresizingMaskIntoConstraints = false
-        updatedDailyGoal.font = UIFont.systemFont(ofSize: 38, weight: .bold)
-        updatedDailyGoal.textColor = .blueText
-        updatedDailyGoal.translatesAutoresizingMaskIntoConstraints = false
+
         vectorImages2.transform = CGAffineTransform(scaleX: 1, y: -1)
         vectorImage1.transform = CGAffineTransform(scaleX: 1, y: -1)
         vectorImage2.transform = CGAffineTransform(scaleX: 1, y: -1)
@@ -195,15 +211,6 @@ class HomeViewController: UIViewController {
     }
     
     private func setupCollectionView(){
-        let layout = UICollectionViewFlowLayout()
-        
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
-        
-        collectionView.register(WaterIntakeCell.self, forCellWithReuseIdentifier: "WaterIntakeCell")
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([
