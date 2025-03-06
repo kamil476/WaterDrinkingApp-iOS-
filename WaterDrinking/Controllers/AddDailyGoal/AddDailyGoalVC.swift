@@ -18,8 +18,21 @@ class AddDailyGoalVC: UIViewController {
     private let vectorImage1 = CustomImageView(imageName: "Vector 1")
     private let vectorImage2 = CustomImageView(imageName: "Vector 2")
     private let vectorImages2 = CustomImageView(imageName: "Vector 2")
-    private let slider = UISlider()
-    private let valueLabel = UILabel()
+    lazy var slider: UISlider = {
+        let slide = UISlider()
+        slide.minimumValue = 0
+        slide.maximumValue = 4000
+        slide.translatesAutoresizingMaskIntoConstraints = false
+        slide.addTarget(self, action: #selector(addGoalSliderValueChanged(_:)), for: .valueChanged)
+        return slide
+    }()
+    lazy var valueLabel: UILabel = {
+        let valLabel = UILabel()
+        valLabel.font = UIFont.systemFont(ofSize: 28)
+        valLabel.textColor = .white
+        valLabel.translatesAutoresizingMaskIntoConstraints = false
+        return valLabel
+    }()
     lazy var saveBtn: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = .clear
@@ -49,19 +62,12 @@ class AddDailyGoalVC: UIViewController {
         view.addSubview(saveBtn)
         vectorImages2.addSubview(slider)
         
-        valueLabel.font = UIFont.systemFont(ofSize: 28)
-        valueLabel.textColor = .white
-        valueLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         vectorImages2.transform = CGAffineTransform(scaleX: 1, y: -1)
         vectorImage1.transform = CGAffineTransform(scaleX: 1, y: -1)
         vectorImage2.transform = CGAffineTransform(scaleX: 1, y: -1)
         vectorImage.transform = CGAffineTransform(scaleX: 1, y: -1)
         
         // Create and set up the slider
-        slider.minimumValue = 0
-        slider.maximumValue = 4000
-        slider.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(slider)
         
         
@@ -100,7 +106,6 @@ class AddDailyGoalVC: UIViewController {
             
         ])
         
-        slider.addTarget(self, action: #selector(addGoalSliderValueChanged(_:)), for: .valueChanged)
     }
     
     // MARK: - Button Action

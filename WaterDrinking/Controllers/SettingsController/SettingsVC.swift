@@ -7,21 +7,19 @@
 
 import UIKit
 
-//protocol getValue{
-//    func indexValue(value: String)
-//}
-
 class SettingsVC: UIViewController {
     
-    let tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(SettingsTBCell.self, forCellReuseIdentifier: "SettingsTBCell")
+        table.delegate = self
+        table.dataSource = self
+        table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
     
 //    var getValueDelegate: getValue?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +28,6 @@ class SettingsVC: UIViewController {
     }
     
     private func setupTableView(){
-        tableView.register(SettingsTBCell.self, forCellReuseIdentifier: "SettingsTBCell")
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
@@ -64,8 +58,3 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-//extension SettingsVC: DailyGoalAdded {
-//    func dailyWaterGoal(value: String) {
-//        getValueDelegate?.indexValue(value: value)
-//    }
-//}

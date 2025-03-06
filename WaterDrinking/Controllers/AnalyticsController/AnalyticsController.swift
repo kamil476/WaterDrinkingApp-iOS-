@@ -9,8 +9,17 @@ import UIKit
 
 class AnalyticsController: UIViewController {
     
-    var tableView: UITableView!
+    lazy var tableView: UITableView = {
+        let tableview = UITableView()
+        tableview.delegate = self
+        tableview.dataSource = self
+        tableview.separatorStyle = .none
+        tableview.register(AnalyticsTableViewCell.self, forCellReuseIdentifier: "AnalyticsTableViewCell")
+        tableview.translatesAutoresizingMaskIntoConstraints = false
+        return tableview
+    }()
     private var drinksByDate: [(date: String, drinks: [listOfSavedDrinks])] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +32,6 @@ class AnalyticsController: UIViewController {
     }
     
     private func setupTableView() {
-        tableView = UITableView()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.register(AnalyticsTableViewCell.self, forCellReuseIdentifier: "AnalyticsTableViewCell")
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([

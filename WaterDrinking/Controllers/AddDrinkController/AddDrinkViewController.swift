@@ -18,8 +18,22 @@ class AddDrinkViewController: UIViewController {
     var onWaterAdded: ((listOfDrinks) -> Void)?
     var onCoffeeAdded: ((listOfDrinks) -> Void)?
     var onTeaAdded: ((listOfDrinks) -> Void)?
-    private let slider = UISlider()
-    private let valueLabel = UILabel()
+    lazy var slider: UISlider = {
+        let slide = UISlider()
+        slide.minimumValue = 0
+        slide.maximumValue = 500
+        slide.translatesAutoresizingMaskIntoConstraints = false
+        slide.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
+        slide.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        return slide
+    }()
+    lazy var valueLabel: UILabel = {
+        let valLabel = UILabel()
+        valLabel.font = UIFont.systemFont(ofSize: 24)
+        valLabel.textColor = .black
+        valLabel.translatesAutoresizingMaskIntoConstraints = false
+        return valLabel
+    }()
     private let glassImage = CustomImageView(imageName: "icons8-empty-glass-50")
     private let waveImage = CustomImageView(imageName: "Vector 1")
     lazy var checkMark: UIButton = {
@@ -45,18 +59,10 @@ class AddDrinkViewController: UIViewController {
     }
     
     private func setupViews(){
-        valueLabel.font = UIFont.systemFont(ofSize: 24)
-        valueLabel.textColor = .black
-        valueLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(valueLabel)
         view.addSubview(glassImage)
         view.addSubview(checkMark)
-        
-        slider.minimumValue = 0
-        slider.maximumValue = 500
-        slider.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(slider)
-        slider.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
         
         NSLayoutConstraint.activate([
             valueLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
@@ -75,8 +81,6 @@ class AddDrinkViewController: UIViewController {
             checkMark.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
             checkMark.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
-        
-        slider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
     }
     
     @objc func sliderValueChanged(_ sender: UISlider) {
@@ -99,11 +103,9 @@ class AddDrinkViewController: UIViewController {
         )
         navigationController?.popViewController(animated: true)
     }
-    
 }
 
 extension Date {
-    
     func stripTime() -> Date {
         let components = Calendar.current.dateComponents([.year, .month, .day], from: self)
         let date = Calendar.current.date(from: components)

@@ -38,7 +38,17 @@ class HomeViewController: UIViewController {
     private let vectorImage2 = CustomImageView(imageName: "Vector 2")
     private let vectorImages2 = CustomImageView(imageName: "Vector 2")
     private let addDrinkLabel = CustomLabel(text: "ADD DRINK", textColor: .customBlue, font: UIFont.systemFont(ofSize: 10, weight: .semibold))
-    private let bottomSheetView = UIView()
+    lazy var bottomSheetView: UIView = {
+        let bottSheet = UIView()
+        bottSheet.backgroundColor = .white
+        bottSheet.layer.cornerRadius = 12
+        bottSheet.layer.shadowColor = UIColor.black.cgColor
+        bottSheet.layer.shadowOpacity = 0.2
+        bottSheet.layer.shadowOffset = CGSize(width: 0, height: -3)
+        bottSheet.layer.shadowRadius = 5
+        bottSheet.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 300)
+        return bottSheet
+    }()
     lazy var teaIcon: UIButton = {
         let btn = UIButton()
         if let image = UIImage(named: "tea") {
@@ -72,9 +82,9 @@ class HomeViewController: UIViewController {
     private let waterLabel = CustomLabel(text: "WATER", textColor: .gray, font: UIFont.systemFont(ofSize: 11, weight: .bold))
     lazy var addDrinkBtn: UIButton = {
         let btn = UIButton()
-        if let image = UIImage(named: "addIcon") {
-            btn.setImage(image, for: .normal)
-        }
+//        if let image = UIImage(named: "addIcon") {
+            btn.setImage(UIImage(named: "addIcon"), for: .normal)
+//        }
         btn.layer.cornerRadius = 10
         btn.layer.shadowColor = UIColor.black.cgColor
         btn.layer.shadowOpacity = 0.2
@@ -230,13 +240,6 @@ class HomeViewController: UIViewController {
         bottomSheetView.addSubview(coffeeLabel)
         bottomSheetView.addSubview(teaIcon)
         bottomSheetView.addSubview(teaLabel)
-        bottomSheetView.backgroundColor = .white
-        bottomSheetView.layer.cornerRadius = 12
-        bottomSheetView.layer.shadowColor = UIColor.black.cgColor
-        bottomSheetView.layer.shadowOpacity = 0.2
-        bottomSheetView.layer.shadowOffset = CGSize(width: 0, height: -3)
-        bottomSheetView.layer.shadowRadius = 5
-        bottomSheetView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 300)
         
         NSLayoutConstraint.activate([
             waterIcon.topAnchor.constraint(equalTo: bottomSheetView.topAnchor, constant: 25),
@@ -266,7 +269,7 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: - ACTIONS
-    @objc func showBottomSheet(){
+    @objc private func showBottomSheet(){
         setupBottomSheet()
         UIView.animate(withDuration: 0.5, animations: {
             self.bottomSheetView.frame.origin.y = self.view.frame.height - 300
